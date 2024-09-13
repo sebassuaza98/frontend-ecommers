@@ -1,0 +1,47 @@
+<form (ngSubmit)="onSubmit()" #productForm="ngForm" class="product-form" novalidate>
+  <h2 class="form-title">Crear Producto</h2>
+  
+  <div class="form-group row">
+    <label for="name" class="col-sm-4 col-form-label">Name</label>
+    <div class="col-sm-8">
+      <input type="text" id="name" class="form-control" [(ngModel)]="product.name" name="name" #name="ngModel" required>
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+        <div *ngIf="name.errors?.['required']">Name is required.</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="description" class="col-sm-4 col-form-label">Description</label>
+    <div class="col-sm-8">
+      <input type="text" id="description" class="form-control" [(ngModel)]="product.description" name="description" #description="ngModel" required>
+      <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-danger">
+        <div *ngIf="description.errors?.['required']">Description is required.</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="price" class="col-sm-4 col-form-label">Price</label>
+    <div class="col-sm-8">
+      <input type="number" id="price" class="form-control" [(ngModel)]="product.price" name="price" #price="ngModel" required>
+      <div *ngIf="price.invalid && (price.dirty || price.touched)" class="text-danger">
+        <div *ngIf="price.errors?.['required']">Price is required.</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="stock" class="col-sm-4 col-form-label">Stock</label>
+    <div class="col-sm-8">
+      <input type="number" id="stock" class="form-control" [(ngModel)]="product.stock" name="stock" #stock="ngModel" required>
+      <div *ngIf="stock.invalid && (stock.dirty || stock.touched)" class="text-danger">
+        <div *ngIf="stock.errors?.['required']">Stock is required.</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group text-center">
+    <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Create Product</button>
+  </div>
+</form>
